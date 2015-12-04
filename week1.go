@@ -30,7 +30,7 @@ func Day2() int {
 	return sum
 }
 
-// Day3 returns all prime factors of 600851475143
+// Day3 returns the largest prime factor of 600851475143
 func Day3() int {
 	targetValue := 600851475143
 
