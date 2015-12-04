@@ -1,5 +1,7 @@
 package main
 
+import "fmt"
+
 // Day1 calculates the sum of the numbers between 0 and 1000
 func Day1() int {
 	sum := 0
@@ -66,4 +68,55 @@ Sieve:
 	}
 
 	return maxFactor
+}
+
+func reverse(s string) string {
+	// Get Unicode code points.
+	n := 0
+	rune := make([]rune, len(s))
+	for _, r := range s {
+		rune[n] = r
+		n++
+	}
+	rune = rune[0:n]
+	// Reverse
+	for i := 0; i < n/2; i++ {
+		rune[i], rune[n-1-i] = rune[n-1-i], rune[i]
+	}
+	// Convert back to UTF-8.
+	return string(rune)
+}
+
+func Day4() int {
+	largestPalindrome := 0
+	for i := 999; i > 99; i-- {
+		for j := i; j > 99; j-- {
+			product := i * j
+			if product > largestPalindrome {
+				productString := fmt.Sprintf("%v", product)
+				reversedString := reverse(productString)
+
+				if productString == reversedString {
+					largestPalindrome = product
+				}
+			} else {
+				// Only getting smaller from here, don't even bother continuing
+				// since we can't have a larger palindrome.
+				break
+			}
+		}
+	}
+	return largestPalindrome
+}
+
+func Day5() int {
+	return -1
+}
+
+func Day6() int {
+	return -1
+}
+
+func Day7() int {
+	return -1
 }
